@@ -1,23 +1,29 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-double Power(double X, int n);
+int LMC(int a, int b);
+int GCD(int a, int b);
 
 int main(void)
 {
-	int k; double Ans;
-	printf("璸衡3.5kΩよ?叫块k=");
-	scanf_s("%d", &k);
-	Ans = Power(3.5, k);
-	printf("3.5%dΩよ=%f\n", k, Ans);
+	int num1, num2;
+	printf("块ㄢ计―程そ计(LCM):");
+	scanf_s("%d %d", &num1, &num2);
+	printf("程そ计:%d\n", LMC(num1, num2));
 	system("pause");
 	return 0;
 }
 
-double Power(double X, int n)
+
+int GCD(int a, int b)
 {
-	int i; double PowerXn = 1;
-	for (i = 1; i <= n; i++)
-		PowerXn *= X;
-	return PowerXn;
+	if (b == 0)
+		return a;
+	else
+		return GCD(b, a%b);
+}
+
+int LMC(int a, int b)
+{
+	return a * b / GCD(a, b);
 }
